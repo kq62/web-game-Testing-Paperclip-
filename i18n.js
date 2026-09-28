@@ -63,6 +63,28 @@
       'how.step4':            'اجمع التمر وفناجين القهوة، واصرف الريالات في السوق.',
       'how.back':             'رجوع',
 
+      // The control table of GAME_PLAN.md section 4. Both schemes are shown at
+      // once: the hint line swaps by pointer type, but this table never hides a
+      // column, so a touch player on a laptop still sees the keyboard row.
+      'how.action':           'الإجراء',
+      'how.keyboard':         'لوحة المفاتيح',
+      'how.touch':            'اللمس',
+      'how.actLaunch':        'تثبيت قوة الانطلاق',
+      'how.keyLaunch':        'المسافة أو Enter',
+      'how.touchLaunch':      'انقر في أي مكان',
+      'how.actSteer':         'التوجيه لأعلى أو لأسفل',
+      'how.keySteer':         '↑ ↓ أو W و S',
+      'how.touchSteer':       'اسحب أو أمسك النصف الأعلى أو الأسفل',
+      'how.actGlide':         'الانزلاق',
+      'how.keyGlide':         'أمسك ↑',
+      'how.touchGlide':       'أمسك النصف الأعلى',
+      'how.actRocket':        'صاروخ العود',
+      'how.keyRocket':        'المسافة في الهواء',
+      'how.touchRocket':      'انقر في الهواء',
+      'how.actPause':         'الإيقاف المؤقت',
+      'how.keyPause':         'P أو Esc',
+      'how.touchPause':       'زر الإيقاف في الشريط',
+
       'hud.distance':         'المسافة',
       'hud.best':             'الأفضل',
       'hud.height':           'الارتفاع',
@@ -77,6 +99,21 @@
       'run.boostReady':       'صاروخ العود جاهز',
       'run.bounce':           'قفزة!',
       'run.perfect':          'قفزة مثالية!',
+      'run.chargeHintKey':    'اضغط المسافة لتثبيت القوة',
+      'run.chargeHintTouch':  'انقر لتثبيت القوة',
+      'run.birdHit':          'اصطدام!',
+      'run.skim':             'نطّة على الماء!',
+      'run.rocket':           'صاروخ العود!',
+      'run.reached':          'وصلت',
+
+      // Landmark names from GAME_PLAN.md section 8. `run.reached` is prefixed to
+      // these, so the toast reads "وصلت — الفنار".
+      'landmark.1000':        'المرسى',
+      'landmark.2000':        'كاسر الأمواج',
+      'landmark.3000':        'الشعاب المرجانية',
+      'landmark.4000':        'جزيرة النخيل',
+      'landmark.5000':        'الفنار',
+      'landmark.6000':        'الضفة الأخرى',
 
       'pause.title':          'إيقاف مؤقت',
       'pause.resume':         'متابعة',
@@ -95,6 +132,7 @@
       'win.title':            'عبرتَ البحر الأحمر!',
       'win.body':             'وصلت العربة إلى الضفة الأخرى. الرحلة كاملة!',
       'win.replay':           'العب مرة أخرى',
+      'win.time':             'زمن العبور',
 
       'souq.title':           'السوق',
       'souq.balance':         'رصيدك',
@@ -130,6 +168,7 @@
       'unit.metre':           'م',
       'unit.metrePerSecond':  'م/ث',
       'unit.riyal':           'ر.س',
+      'unit.second':          'ث',
 
       'controls.keyboard':     'لوحة المفاتيح',
       'controls.keyboardBody': 'المسافة: الانطلاق والدفع · ↑ ↓: التوجيه · P: إيقاف مؤقت',
@@ -164,6 +203,25 @@
       'how.step4':            'Collect dates and coffee cups, then spend your riyals in the souq.',
       'how.back':             'Back',
 
+      'how.action':           'Action',
+      'how.keyboard':         'Keyboard',
+      'how.touch':            'Touch',
+      'how.actLaunch':        'Lock launch power',
+      'how.keyLaunch':        'Space or Enter',
+      'how.touchLaunch':      'Tap anywhere',
+      'how.actSteer':         'Steer up or down',
+      'how.keySteer':         '↑ ↓ or W and S',
+      'how.touchSteer':       'Swipe or hold the upper or lower half',
+      'how.actGlide':         'Glide',
+      'how.keyGlide':         'Hold ↑',
+      'how.touchGlide':       'Hold the upper half',
+      'how.actRocket':        'Oud Rocket',
+      'how.keyRocket':        'Space in mid-air',
+      'how.touchRocket':      'Tap in mid-air',
+      'how.actPause':         'Pause',
+      'how.keyPause':         'P or Esc',
+      'how.touchPause':       'The pause button in the HUD',
+
       'hud.distance':         'Distance',
       'hud.best':             'Best',
       'hud.height':           'Height',
@@ -178,6 +236,19 @@
       'run.boostReady':       'Oud Rocket ready',
       'run.bounce':           'Bounce!',
       'run.perfect':          'Perfect bounce!',
+      'run.chargeHintKey':    'Press Space to lock the power',
+      'run.chargeHintTouch':  'Tap to lock the power',
+      'run.birdHit':          'Hit!',
+      'run.skim':             'Skipped off the water!',
+      'run.rocket':           'Oud Rocket!',
+      'run.reached':          'Reached',
+
+      'landmark.1000':        'the marina buoys',
+      'landmark.2000':        'the breakwater',
+      'landmark.3000':        'the coral reef',
+      'landmark.4000':        'the palm islet',
+      'landmark.5000':        'the lighthouse',
+      'landmark.6000':        'the far shore',
 
       'pause.title':          'Paused',
       'pause.resume':         'Resume',
@@ -196,6 +267,7 @@
       'win.title':            'You crossed the Red Sea!',
       'win.body':             'Your cart reached the far shore. The crossing is complete!',
       'win.replay':           'Play again',
+      'win.time':             'Crossing time',
 
       'souq.title':           'Souq',
       'souq.balance':         'Your balance',
@@ -231,6 +303,7 @@
       'unit.metre':           'm',
       'unit.metrePerSecond':  'm/s',
       'unit.riyal':           'SAR',
+      'unit.second':          's',
 
       'controls.keyboard':     'Keyboard',
       'controls.keyboardBody': 'Space: launch and boost · ↑ ↓: steer · P: pause',
@@ -297,6 +370,27 @@
   function metres(value)  { return num(value) + ' ' + t('unit.metre'); }
   function speed(value)   { return num(value) + ' ' + t('unit.metrePerSecond'); }
   function riyals(value)  { return num(value) + ' ' + t('unit.riyal'); }
+
+  // A crossing time is the one number worth a decimal: whole seconds would hide
+  // the difference between two close runs. `num` only formats integers, so the
+  // fraction is split off, formatted separately and joined by the locale's own
+  // decimal separator.
+  function seconds(value) {
+    var n = Number(value);
+    if (!isFinite(n) || n < 0) n = 0;
+    var whole = Math.floor(n);
+    var tenth = Math.round((n - whole) * 10);
+    if (tenth === 10) { whole += 1; tenth = 0; }
+    var sep = '.';
+    try {
+      var parts = new Intl.NumberFormat(LANGS[lang].locale + '-u-nu-' +
+                                        LANGS[lang].numbering).formatToParts(1.1);
+      for (var i = 0; i < parts.length; i++) {
+        if (parts[i].type === 'decimal') { sep = parts[i].value; break; }
+      }
+    } catch (err) { /* keep the ASCII point */ }
+    return num(whole) + sep + num(tenth) + ' ' + t('unit.second');
+  }
 
   /* --------------------------------------------------------------- lookup */
 
@@ -421,6 +515,7 @@
     metres: metres,
     speed: speed,
     riyals: riyals,
+    seconds: seconds,
     setLang: setLang,
     toggle: toggle,
     onChange: onChange,
