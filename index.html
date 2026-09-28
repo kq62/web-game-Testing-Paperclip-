@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!-- lang/dir are set by I18N.apply(); Arabic is the default first impression. -->
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title data-i18n="app.title"></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <canvas id="stage" width="960" height="540" data-i18n-aria-label="a11y.playfield" role="img"></canvas>
+
+    <!-- HUD: visible only while running/paused. -->
+    <div id="hud" class="hud" hidden>
+      <div class="hud-stats" aria-live="polite">
+        <span class="stat"><b data-i18n="hud.distance"></b> <output id="hudDistance"></output></span>
+        <span class="stat"><b data-i18n="hud.best"></b> <output id="hudBest"></output></span>
+        <span class="stat"><b data-i18n="hud.height"></b> <output id="hudHeight"></output></span>
+        <span class="stat"><b data-i18n="hud.speed"></b> <output id="hudSpeed"></output></span>
+        <span class="stat"><b data-i18n="hud.riyals"></b> <output id="hudRiyals"></output></span>
+        <span class="stat"><b data-i18n="hud.boost"></b> <output id="hudBoosts"></output></span>
+      </div>
+      <div class="hud-bar">
+        <span class="hud-bar-label" data-i18n="hud.progress"></span>
+        <div class="bar"><div id="hudProgress" class="bar-fill"></div></div>
+      </div>
+      <button id="btnPause" class="btn btn-icon" type="button"
+              data-i18n="hud.pause" data-i18n-aria-label="a11y.pause"></button>
+    </div>
+
+    <!-- Screens: siblings driven by one state machine, exactly one visible. -->
+    <section id="screen-start" class="screen" hidden>
+      <div class="panel">
+        <header class="panel-head">
+          <h1 data-i18n="app.title"></h1>
+          <!-- The label names the language you would switch *to*, so it cannot be a
+               fixed key. game.js sets it from lang.ar / lang.en on every flip. -->
+          <button id="btnLang" class="btn btn-ghost" type="button"
+                  data-i18n-aria-label="a11y.langToggle"></button>
+        </header>
+        <p class="tagline" data-i18n="app.tagline"></p>
+        <dl class="kv">
+          <dt data-i18n="start.best"></dt><dd id="startBest"></dd>
+          <dt data-i18n="start.balance"></dt><dd id="startBalance"></dd>
+        </dl>
+        <div class="actions">
+          <button id="btnPlay" class="btn btn-primary" type="button" data-i18n="start.play"></button>
+          <button id="btnSouq" class="btn" type="button" data-i18n="start.souq"></button>
+          <button id="btnHow" class="btn" type="button" data-i18n="start.howTo"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-how" class="screen" hidden>
+      <div class="panel">
+        <h2 data-i18n="how.title"></h2>
+        <ol class="steps">
+          <li data-i18n="how.step1"></li>
+          <li data-i18n="how.step2"></li>
+          <li data-i18n="how.step3"></li>
+          <li data-i18n="how.step4"></li>
+        </ol>
+        <table class="controls">
+          <thead>
+            <tr>
+              <th data-i18n="how.action"></th>
+              <th data-i18n="how.keyboard"></th>
+              <th data-i18n="how.touch"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td data-i18n="how.actLaunch"></td><td data-i18n="how.keyLaunch"></td><td data-i18n="how.touchLaunch"></td></tr>
+            <tr><td data-i18n="how.actSteer"></td><td data-i18n="how.keySteer"></td><td data-i18n="how.touchSteer"></td></tr>
+            <tr><td data-i18n="how.actGlide"></td><td data-i18n="how.keyGlide"></td><td data-i18n="how.touchGlide"></td></tr>
+            <tr><td data-i18n="how.actRocket"></td><td data-i18n="how.keyRocket"></td><td data-i18n="how.touchRocket"></td></tr>
+            <tr><td data-i18n="how.actPause"></td><td data-i18n="how.keyPause"></td><td data-i18n="how.touchPause"></td></tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <button id="btnHowBack" class="btn btn-primary" type="button" data-i18n="how.back"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-souq" class="screen" hidden>
+      <div class="panel panel-wide">
+        <header class="panel-head">
+          <h2 data-i18n="souq.title"></h2>
+          <p class="balance"><b data-i18n="souq.balance"></b> <output id="souqBalance"></output></p>
+        </header>
+        <!-- Cards are built from UPGRADES in game.js; every label comes from I18N. -->
+        <div id="souqGrid" class="souq-grid"></div>
+        <p id="souqNotice" class="notice" data-i18n="souq.notEnough" hidden></p>
+        <div class="actions">
+          <button id="btnSouqBack" class="btn btn-primary" type="button" data-i18n="souq.back"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-paused" class="screen screen-dim" hidden>
+      <div class="panel">
+        <h2 data-i18n="pause.title"></h2>
+        <div class="actions">
+          <button id="btnResume" class="btn btn-primary" type="button"
+                  data-i18n="pause.resume" data-i18n-aria-label="a11y.resume"></button>
+          <button id="btnEndRun" class="btn" type="button" data-i18n="pause.quit"></button>
+          <button id="btnLangPaused" class="btn btn-ghost" type="button"
+                  data-i18n-aria-label="a11y.langToggle"></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen screen-dim" hidden>
+      <div class="panel">
+        <h2 id="resultTitle" data-i18n="result.title"></h2>
+        <p id="resultRecord" class="record" data-i18n="result.newBest" hidden></p>
+        <p id="resultWinBody" class="tagline" data-i18n="win.body" hidden></p>
+        <dl class="kv">
+          <dt data-i18n="result.distance"></dt><dd id="resultDistance"></dd>
+          <dt data-i18n="result.bestDistance"></dt><dd id="resultBest"></dd>
+          <dt id="resultTimeLabel" data-i18n="win.time" hidden></dt><dd id="resultTime" hidden></dd>
+          <dt data-i18n="result.dates"></dt><dd id="resultDates"></dd>
+          <dt data-i18n="result.coffee"></dt><dd id="resultCups"></dd>
+          <dt data-i18n="result.earned"></dt><dd id="resultEarned"></dd>
+          <dt data-i18n="start.balance"></dt><dd id="resultBalance"></dd>
+        </dl>
+        <div class="actions">
+          <button id="btnAgain" class="btn btn-primary" type="button" data-i18n="result.again"></button>
+          <button id="btnResultSouq" class="btn" type="button" data-i18n="result.toSouq"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Touch-only steering pads; hidden on pointer:fine. -->
+    <div id="touchPads" class="touch-pads" hidden aria-hidden="true">
+      <div class="pad pad-up"></div>
+      <div class="pad pad-down"></div>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
